@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion '30.0.3'
+    defaultConfig {
+        configurations.all {
+            resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
+        }
+        applicationId "com.ksyun.live.demo"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndkVersion "21.3.65281470"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
+    //implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:27.0.1'
+    implementation 'com.lht:paintview:1.17'
+    implementation 'com.facebook.fresco:fresco:1.4.0'
+    implementation 'com.facebook.fresco:animated-gif:1.4.0'
+    implementation 'com.facebook.fresco:animated-webp:1.4.0'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+    implementation 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.7.2'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+    implementation project(':libksylive')
+    implementation files('libs/zxing.jar')
+}
